@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CollectionListResponse",
+  "type": "object",
+  "required": [
+    "list"
+  ],
+  "properties": {
+    "list": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CollectionInfo"
+      }
+    }
+  },
+          "$ref": "#/definitions/Addr"
+        },
+        "cw721_address": {
+          "$ref": "#/definitions/Addr"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "owner": {
+          "$ref": "#/definitions/Addr"
+        },
+        "uri": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
