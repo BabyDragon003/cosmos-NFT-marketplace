@@ -3,6 +3,12 @@ use cosmwasm_std::testing::{mock_dependencies, mock_env, mock_info};
 use cosmwasm_std::{from_binary, to_binary, CosmosMsg, DepsMut, Empty, Response, WasmMsg};
 
 use cw721::{
+    Approval, ApprovalResponse, ContractInfoResponse, Cw721Query, Cw721ReceiveMsg, Expiration,
+    NftInfoResponse, OperatorsResponse, OwnerOfResponse,
+};
+
+use crate::{
+    ContractError, Cw721Contract, ExecuteMsg, Extension, InstantiateMsg, MintMsg, QueryMsg,
 };
 
 const MINTER: &str = "merlin";
