@@ -8,6 +8,17 @@ pub enum ContractError {
     #[error("{0}")]
     Std(#[from] StdError),
 
+    #[error("{0}")]
+    Hex(#[from] FromHexError),
+
+    #[error("Disabled")]
+    Disabled {},
+
+    #[error("InvalidTokenReplyId")]
+    InvalidTokenReplyId {},
+    
+    #[error("Unauthorized")]
+    Unauthorized {},
     
     #[error("TooBigRoyalties: {a} + {b} > {c}")]
     TooBigRoyalties{a: u32, b: u32, c: u32},

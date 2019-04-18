@@ -8,6 +8,17 @@ use cosmwasm_std::{
     to_binary, Addr, Binary, CosmosMsg, Deps, DepsMut, Env, MessageInfo, Reply, ReplyOn, Response, Api,
     StdResult, SubMsg, Uint128, WasmMsg, Coin, from_binary, BankMsg, QueryRequest, WasmQuery, Storage, Order
 };
+use cw2::set_contract_version;
+use cw721::{
+    OwnerOfResponse,
+    
+};
+use cw20::Denom;
+
+use cw2::{get_contract_version};
+use cw721_base::{
+    msg::ExecuteMsg as Cw721ExecuteMsg, Extension
+};
 use crate::msg::{ConfigResponse, ExecuteMsg, InstantiateMsg, QueryMsg, MigrateMsg, };
 
 use cw20::{ Balance};

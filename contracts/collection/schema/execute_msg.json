@@ -13,22 +13,6 @@
           "required": [
             "owner"
           ],
-          "properties": {
-            "owner": {
-              "$ref": "#/definitions/Addr"
-            }
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    {
-      "type": "object",
-      "required": [
-        "update_enabled"
-      ],
-      "properties": {
-        "update_enabled": {
           "type": "object",
           "required": [
             "enabled"
