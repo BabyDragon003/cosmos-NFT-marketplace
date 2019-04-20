@@ -23,32 +23,6 @@ pub struct Trait {
 
 // see: https://docs.opensea.io/docs/metadata-standards
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug, Default)]
-pub struct Metadata {
-    pub image: Option<String>,
-    pub image_data: Option<String>,
-    pub external_url: Option<String>,
-    pub description: Option<String>,
-    pub name: Option<String>,
-    pub attributes: Option<Vec<Trait>>,
-    pub background_color: Option<String>,
-    pub animation_url: Option<String>,
-    pub youtube_url: Option<String>,
-    pub timestamp: Option<u64>
-}
-
-pub type Extension = Option<Metadata>;
-pub type Cw721MetadataContract<'a> = Cw721Contract<'a, Extension, Empty>;
-// pub type ExecuteMsg = ExecuteMsg<Extension>;
-
-#[cfg(not(feature = "library"))]
-pub mod entry {
-    use super::*;
-
-    use cosmwasm_std::entry_point;
-    use cosmwasm_std::{Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
-
-    // This is a simple type to let us handle empty extensions
-
     // This makes a conscious choice on the various generics used by the contract
     #[entry_point]
     pub fn instantiate(
