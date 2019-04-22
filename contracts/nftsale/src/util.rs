@@ -1,4 +1,3 @@
-use cosmwasm_std::{
     to_binary,  Response, StdResult, Uint128, Coin, BankMsg,
     WasmMsg, WasmQuery, QueryRequest, Addr, Storage, CosmosMsg,  QuerierWrapper, BalanceResponse as NativeBalanceResponse, BankQuery
 };
