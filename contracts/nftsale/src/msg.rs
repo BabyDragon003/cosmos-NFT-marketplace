@@ -8,16 +8,11 @@ use serde::{Deserialize, Serialize};
 use cw_utils::{Expiration, Scheduled};
 use cw20::Denom;
 
-        owner: Addr,
-    },
-    UpdateEnabled {
-        enabled: bool
-    },
-    SetToken {
-        token_id: String
-    },
-    Buy {},
-    Withdraw {
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct InstantiateMsg {
+    pub price: Uint128,
+    pub denom: String,
+    pub cw721_address: Addr
         index: u32
     },
     WithdrawId {

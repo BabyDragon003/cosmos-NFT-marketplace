@@ -8,16 +8,11 @@
     "provider",
     "requests",
     "sale_type",
-      "$ref": "#/definitions/Addr"
-    },
-    "requests": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Request"
-      }
-    },
-    "sale_type": {
-      "$ref": "#/definitions/SaleType"
+    "sell_index",
+    "token_id"
+  ],
+  "properties": {
+    "duration_type": {
     },
     "sell_index": {
       "type": "integer",
