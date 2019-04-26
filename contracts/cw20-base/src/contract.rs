@@ -13,6 +13,22 @@ use cw20::{
 use cw_utils::ensure_from_older_version;
 
 use crate::allowances::{
+    execute_burn_from, execute_decrease_allowance, execute_increase_allowance, execute_send_from,
+    execute_transfer_from, query_allowance,
+};
+use crate::enumerable::{query_all_accounts, query_owner_allowances, query_spender_allowances};
+use crate::error::ContractError;
+use crate::msg::{ExecuteMsg, InstantiateMsg, MigrateMsg, QueryMsg};
+use crate::state::{
+    MinterData, TokenInfo, ALLOWANCES, ALLOWANCES_SPENDER, BALANCES, LOGO, MARKETING_INFO,
+    TOKEN_INFO,
+};
+
+// version info for migration info
+const CONTRACT_NAME: &str = "crates.io:cw20-base";
+const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
+
+const LOGO_SIZE_CAP: usize = 5 * 1024;
 
 /// Checks if data starts with XML preamble
 fn verify_xml_preamble(data: &[u8]) -> Result<(), ContractError> {
