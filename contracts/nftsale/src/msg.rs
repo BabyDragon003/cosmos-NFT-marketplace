@@ -18,16 +18,11 @@ pub struct InstantiateMsg {
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ExecuteMsg {
-pub enum QueryMsg {
-    GetConfig {},
-    GetToken {
-        index: u32
-    }
-}
-
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct ConfigResponse {
-    pub owner: Addr,
+    UpdateOwner {
+        owner: Addr,
+    },
+    UpdateEnabled {
+        enabled: bool
     pub price: Uint128,
     pub total_count: u32,
     pub sold_index: u32,
