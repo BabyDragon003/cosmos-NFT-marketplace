@@ -1,13 +1,8 @@
+mod contract_tests;
 mod error;
 mod execute;
 pub mod helpers;
 pub mod msg;
-mod query;
-pub mod state;
-
-use schemars::JsonSchema;
-pub use crate::error::ContractError;
-pub use crate::msg::{ExecuteMsg, InstantiateMsg, MintMsg, MinterResponse, QueryMsg};
 pub use crate::state::Cw721Contract;
 use cosmwasm_std::Empty;
 use serde::{Deserialize, Serialize};
