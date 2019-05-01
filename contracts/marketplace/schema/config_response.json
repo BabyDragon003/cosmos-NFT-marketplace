@@ -3,6 +3,12 @@
   "title": "ConfigResponse",
   "type": "object",
   "required": [
+    "collection_code_id",
+    "cw721_base_code_id",
+    "max_collection_id",
+    "owner"
+  ],
+  "properties": {
     "collection_code_id": {
       "type": "integer",
       "format": "uint64",
