@@ -13,22 +13,6 @@ use crate::{
 
 const MINTER: &str = "merlin";
 const CONTRACT_NAME: &str = "Magic Power";
-const SYMBOL: &str = "MGK";
-
-fn setup_contract(deps: DepsMut<'_>) -> Cw721Contract<'static, Extension, Empty> {
-    let contract = Cw721Contract::default();
-    let msg = InstantiateMsg {
-        name: CONTRACT_NAME.to_string(),
-        symbol: SYMBOL.to_string(),
-        minter: String::from(MINTER),
-    };
-    let info = mock_info("creator", &[]);
-    let res = contract.instantiate(deps, mock_env(), info, msg).unwrap();
-    assert_eq!(0, res.messages.len());
-    contract
-}
-
-#[test]
 fn proper_instantiation() {
     let mut deps = mock_dependencies();
     let contract = Cw721Contract::<Extension, Empty>::default();

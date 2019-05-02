@@ -8,16 +8,11 @@ use cosmwasm_std::{
 use cw2::set_contract_version;
 use cw20::{
     BalanceResponse, Cw20Coin, Cw20ReceiveMsg, DownloadLogoResponse, EmbeddedLogo, Logo, LogoInfo,
-use crate::state::{
-    MinterData, TokenInfo, ALLOWANCES, ALLOWANCES_SPENDER, BALANCES, LOGO, MARKETING_INFO,
-    TOKEN_INFO,
+    MarketingInfoResponse, MinterResponse, TokenInfoResponse,
 };
+use cw_utils::ensure_from_older_version;
 
-// version info for migration info
-const CONTRACT_NAME: &str = "crates.io:cw20-base";
-const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
-
-const LOGO_SIZE_CAP: usize = 5 * 1024;
+use crate::allowances::{
 
 /// Checks if data starts with XML preamble
 fn verify_xml_preamble(data: &[u8]) -> Result<(), ContractError> {

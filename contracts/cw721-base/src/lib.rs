@@ -8,16 +8,11 @@ pub mod state;
 
 use schemars::JsonSchema;
 pub use crate::error::ContractError;
-}
+pub use crate::msg::{ExecuteMsg, InstantiateMsg, MintMsg, MinterResponse, QueryMsg};
+pub use crate::state::Cw721Contract;
+use cosmwasm_std::Empty;
+use serde::{Deserialize, Serialize};
 
-// see: https://docs.opensea.io/docs/metadata-standards
-#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug, Default)]
-pub struct Metadata {
-    pub image: Option<String>,
-    pub image_data: Option<String>,
-    pub external_url: Option<String>,
-    pub description: Option<String>,
-    pub name: Option<String>,
     pub attributes: Option<Vec<Trait>>,
     pub background_color: Option<String>,
     pub animation_url: Option<String>,
