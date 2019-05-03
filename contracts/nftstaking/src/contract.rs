@@ -13,6 +13,22 @@ use cw721::{
 };
 use cw20::Denom;
 
+use cw2::{get_contract_version};
+use cw721::Cw721ReceiveMsg;
+use cw_storage_plus::Bound;
+use cw721_base::{
+    msg::ExecuteMsg as Cw721ExecuteMsg, msg::InstantiateMsg as Cw721InstantiateMsg, Extension, 
+    msg::MintMsg, msg::BatchMintMsg, msg::QueryMsg as Cw721QueryMsg,  msg::EditMsg
+};
+use crate::msg::{ConfigResponse, ExecuteMsg, InstantiateMsg, QueryMsg, MigrateMsg, NftReceiveMsg, StakingInfo};
+use cw_utils::{Expiration, Scheduled};
+use cw20::{Cw20ReceiveMsg, Cw20ExecuteMsg, Cw20CoinVerified, Balance};
+use cw_utils::parse_reply_instantiate_data;
+use sha2::Digest;
+use std::convert::TryInto;
+
+use crate::util;
+use marble_collection::msg::{InstantiateMsg as CollectionInstantiateMsg, ExecuteMsg as CollectionExecuteMsg, QueryMsg as CollectionQueryMsg, ConfigResponse as CollectionConfigResponse};
 
 // version info for migration info
 const CONTRACT_NAME: &str = "nftstaking";
