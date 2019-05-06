@@ -1,4 +1,3 @@
-{
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "ConfigResponse",
   "type": "object",
@@ -23,6 +22,32 @@
           "$ref": "#/definitions/Addr"
         },
         {
+          "type": "null"
+        }
+      ]
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "max_tokens": {
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "name": {
+      "type": "string"
+    },
+    "owner": {
+      "$ref": "#/definitions/Addr"
+    },
+    "royalty": {
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "symbol": {
+      "type": "string"
+    },
     "unused_token_id": {
       "type": "integer",
       "format": "uint32",
