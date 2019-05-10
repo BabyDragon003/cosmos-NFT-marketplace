@@ -13,6 +13,22 @@ pub struct InstantiateMsg {
     pub collection_address: Addr,
     pub cw20_address: Addr,
     pub daily_reward: Uint128,
+    pub interval: u64,
+    pub lock_time: u64
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum ExecuteMsg {
+    UpdateOwner {
+        owner: Addr,
+    },
+    UpdateEnabled {
+        enabled: bool
+    },
+    UpdateConfig {
+        cw20_address: Addr,
+        daily_reward: Uint128,
         interval: u64,
         lock_time: u64
     },
