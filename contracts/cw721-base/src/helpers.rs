@@ -1,4 +1,3 @@
-use crate::{ExecuteMsg, QueryMsg};
 use cosmwasm_std::{to_binary, Addr, CosmosMsg, QuerierWrapper, StdResult, WasmMsg, WasmQuery};
 use cw721::{
     AllNftInfoResponse, Approval, ApprovalResponse, ApprovalsResponse, ContractInfoResponse,
@@ -18,6 +17,27 @@ impl Cw721Contract {
 
     pub fn call<T: Serialize>(&self, msg: ExecuteMsg<T>) -> StdResult<CosmosMsg> {
         let msg = to_binary(&msg)?;
+        Ok(WasmMsg::Execute {
+            contract_addr: self.addr().into(),
+            msg,
+            funds: vec![],
+        }
+        .into())
+    }
+
+    pub fn query<T: DeserializeOwned>(
+        &self,
+        querier: &QuerierWrapper,
+        req: QueryMsg,
+    ) -> StdResult<T> {
+        let query = WasmQuery::Smart {
+            contract_addr: self.addr().into(),
+            msg: to_binary(&req)?,
+        }
+        .into();
+        querier.query(&query)
+    }
+
     /*** queries ***/
 
     pub fn owner_of<T: Into<String>>(
