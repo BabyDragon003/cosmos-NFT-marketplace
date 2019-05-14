@@ -1,13 +1,8 @@
+use cosmwasm_std::{
     to_binary,  Response, StdResult, Uint128, Coin, BankMsg,
     WasmMsg, WasmQuery, QueryRequest, Addr, Storage, CosmosMsg,  QuerierWrapper, BalanceResponse as NativeBalanceResponse, BankQuery
 };
 use cw20::{Balance, Cw20ExecuteMsg, Denom, BalanceResponse as CW20BalanceResponse, Cw20QueryMsg};
-use crate::error::ContractError;
-use crate::state::CONFIG;
-use wasmswap::msg::{ExecuteMsg as WasmswapExecuteMsg, QueryMsg as WasmswapQueryMsg, Token1ForToken2PriceResponse, Token2ForToken1PriceResponse, InfoResponse as WasmswapInfoResponse, TokenSelect};
-
-pub const MAX_LIMIT: u32 = 30;
-pub const DEFAULT_LIMIT: u32 = 10;
 pub const MAX_ORDER: u64 = 10;
 
 pub fn multiple() -> Uint128 { Uint128::from(100u128) }
