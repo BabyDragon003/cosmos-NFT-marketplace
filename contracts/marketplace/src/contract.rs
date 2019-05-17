@@ -3,6 +3,12 @@ use std::collections::btree_set::Difference;
 #[cfg(not(feature = "library"))]
 use cosmwasm_std::entry_point;
 use cosmwasm_std::{
+    attr, to_binary, from_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult, Uint128,
+    WasmMsg, WasmQuery, QueryRequest, CosmosMsg, Order, Addr, Decimal, Storage, Api, SubMsg, ReplyOn, Reply, QuerierWrapper
+};
+use cw_utils::parse_reply_instantiate_data;
+use cw2::{get_contract_version, set_contract_version};
+use cw20::{Cw20ExecuteMsg, Cw20ReceiveMsg, Cw20QueryMsg, Cw20CoinVerified};
 use cw20::{TokenInfoResponse, Balance};
 use cw_utils::{maybe_addr};
 use cw_storage_plus::Bound;
@@ -12,27 +18,6 @@ use crate::msg::{
 };
 use crate::state::{
     Config, CONFIG, COLLECTIONS
-};
-
-use marble_collection::msg::{InstantiateMsg as CollectionInstantiateMsg, ExecuteMsg as CollectionExecuteMsg, QueryMsg as CollectionQueryMsg, ConfigResponse as CollectionConfigResponse};
-
-// Version info, for migration info
-const CONTRACT_NAME: &str = "marble-marketplace";
-const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
-
-#[cfg_attr(not(feature = "library"), entry_point)]
-pub fn instantiate(
-    deps: DepsMut,
-    _env: Env,
-    info: MessageInfo,
-    msg: InstantiateMsg,
-) -> StdResult<Response> {
-    set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
-
-    let owner = info.sender;
-
-    let config = Config {
-        owner,
         max_collection_id: 0u32,
         collection_code_id: msg.collection_code_id,
         cw721_base_code_id: msg.cw721_base_code_id,

@@ -3,6 +3,12 @@ use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use cosmwasm_std::{Addr, Uint128};
+use cw_storage_plus::Item;
+use cw_utils::{Expiration, Scheduled};
+use cw_storage_plus::{Map};
+use crate::msg::{SaleInfo, Royalty};
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct Config {
     pub owner: Addr,
     pub cw721_address: Option<Addr>,

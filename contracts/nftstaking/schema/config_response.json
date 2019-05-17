@@ -3,6 +3,12 @@
   "title": "ConfigResponse",
   "type": "object",
   "required": [
+    "cw20_address",
+    "enabled",
+    "max_tokens",
+    "name",
+    "owner",
+    "royalty",
     "symbol",
     "unused_token_id",
     "uri"
