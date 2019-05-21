@@ -3,12 +3,6 @@ use cw20::Cw20ReceiveMsg;
 use cw721::Cw721ReceiveMsg;
 
 use cw721_base::Extension;
-use schemars::JsonSchema;
-use serde::{Deserialize, Serialize};
-use cw_utils::{Expiration, Scheduled};
-use cw20::Denom;
-
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct InstantiateMsg {
     pub collection_address: Addr,
     pub cw20_address: Addr,

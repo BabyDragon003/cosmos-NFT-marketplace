@@ -3,12 +3,6 @@
   "title": "SalesResponse",
   "type": "object",
   "required": [
-    "list"
-  ],
-  "properties": {
-    "list": {
-      "type": "array",
-      "items": {
         "$ref": "#/definitions/SaleInfo"
       }
     }

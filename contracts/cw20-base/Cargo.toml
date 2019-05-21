@@ -3,12 +3,6 @@ name = "cw20-base"
 version = "0.14.0"
 authors = ["Ethan Frey <ethanfrey@users.noreply.github.com>"]
 edition = "2018"
-description = "Basic implementation of a CosmWasm-20 compliant token"
-license = "Apache-2.0"
-repository = "https://github.com/CosmWasm/cw-plus"
-homepage = "https://cosmwasm.com"
-documentation = "https://docs.cosmwasm.com"
-
 [lib]
 crate-type = ["cdylib", "rlib"]
 

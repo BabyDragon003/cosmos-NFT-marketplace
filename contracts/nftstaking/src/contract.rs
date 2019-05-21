@@ -3,12 +3,6 @@ use crate::ContractError;
 use crate::state::{Config, CONFIG, STAKING};
 use cosmwasm_std::entry_point;
 use cosmwasm_std::{
-    to_binary, Addr, Binary, CosmosMsg, Deps, DepsMut, Env, MessageInfo, Reply, ReplyOn, Response, Api,
-    StdResult, SubMsg, Uint128, WasmMsg, Coin, from_binary, BankMsg, QueryRequest, WasmQuery, Storage, Order
-};
-use cw2::set_contract_version;
-use cw721::{
-    OwnerOfResponse
     
 };
 use cw20::Denom;
@@ -23,6 +17,32 @@ use cw721_base::{
 use crate::msg::{ConfigResponse, ExecuteMsg, InstantiateMsg, QueryMsg, MigrateMsg, NftReceiveMsg, StakingInfo};
 use cw_utils::{Expiration, Scheduled};
 use cw20::{Cw20ReceiveMsg, Cw20ExecuteMsg, Cw20CoinVerified, Balance};
+use cw_utils::parse_reply_instantiate_data;
+use sha2::Digest;
+use std::convert::TryInto;
+
+use crate::util;
+use marble_collection::msg::{InstantiateMsg as CollectionInstantiateMsg, ExecuteMsg as CollectionExecuteMsg, QueryMsg as CollectionQueryMsg, ConfigResponse as CollectionConfigResponse};
+
+// version info for migration info
+const CONTRACT_NAME: &str = "nftstaking";
+const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
+const INSTANTIATE_TOKEN_REPLY_ID: u64 = 1;
+
+
+#[cfg_attr(not(feature = "library"), entry_point)]
+pub fn instantiate(
+    deps: DepsMut,
+    env: Env,
+    info: MessageInfo,
+    msg: InstantiateMsg,
+) -> Result<Response, crate::ContractError> {
+    set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
+
+
+    let config = Config {
+        owner: info.sender.clone(),
+        collection_address: msg.collection_address.clone(),
         cw20_address: msg.cw20_address.clone(),
         daily_reward: msg.daily_reward.clone(),
         interval: msg.interval,

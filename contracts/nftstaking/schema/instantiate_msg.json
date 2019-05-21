@@ -3,12 +3,6 @@
   "title": "InstantiateMsg",
   "type": "object",
   "required": [
-    "cw20_address",
-    "max_tokens",
-    "name",
-    "owner",
-    "royalty",
-    "symbol",
     "token_code_id",
     "uri"
   ],

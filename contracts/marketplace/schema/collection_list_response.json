@@ -3,12 +3,6 @@
   "title": "CollectionListResponse",
   "type": "object",
   "required": [
-    "list"
-  ],
-  "properties": {
-    "list": {
-      "type": "array",
-      "items": {
         "$ref": "#/definitions/CollectionInfo"
       }
     }
