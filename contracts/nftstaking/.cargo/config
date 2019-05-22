@@ -3,3 +3,6 @@ wasm = "build --release --target wasm32-unknown-unknown"
 wasm-debug = "build --target wasm32-unknown-unknown"
 unit-test = "test --lib"
 schema = "run --example schema"
+
+[build]
+target-dir="./target"

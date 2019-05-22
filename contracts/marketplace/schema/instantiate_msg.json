@@ -3,13 +3,8 @@
   "title": "InstantiateMsg",
   "type": "object",
   "required": [
-      "format": "uint64",
-      "minimum": 0.0
-    },
-    "cw721_base_code_id": {
-      "type": "integer",
-      "format": "uint64",
-      "minimum": 0.0
-    }
-  }
-}
+    "collection_code_id",
+    "cw721_base_code_id"
+  ],
+  "properties": {
+    "collection_code_id": {

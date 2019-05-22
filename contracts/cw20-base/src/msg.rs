@@ -3,6 +3,12 @@ use cw20::{Cw20Coin, Logo, MinterResponse};
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
+pub use cw20::Cw20ExecuteMsg as ExecuteMsg;
+
+#[derive(Serialize, Deserialize, JsonSchema, Debug, Clone, PartialEq)]
+pub struct InstantiateMarketingInfo {
+    pub project: Option<String>,
+    pub description: Option<String>,
     pub marketing: Option<String>,
     pub logo: Option<Logo>,
 }

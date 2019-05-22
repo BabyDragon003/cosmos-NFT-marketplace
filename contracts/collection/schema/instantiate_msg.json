@@ -8,17 +8,6 @@
     "name",
     "owner",
     "royalty",
-    "symbol",
-    "token_code_id",
-    "uri"
-  ],
-  "properties": {
-    "cw20_address": {
-      "$ref": "#/definitions/Addr"
-    },
-    "max_tokens": {
-      "type": "integer",
-      "format": "uint32",
       "minimum": 0.0
     },
     "name": {
