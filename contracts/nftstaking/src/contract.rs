@@ -8,16 +8,11 @@ use cosmwasm_std::{
 };
 use cw2::set_contract_version;
 use cw721::{
+    OwnerOfResponse
+    
 };
-use crate::msg::{ConfigResponse, ExecuteMsg, InstantiateMsg, QueryMsg, MigrateMsg, NftReceiveMsg, StakingInfo};
-use cw_utils::{Expiration, Scheduled};
-use cw20::{Cw20ReceiveMsg, Cw20ExecuteMsg, Cw20CoinVerified, Balance};
-use cw_utils::parse_reply_instantiate_data;
-use sha2::Digest;
-use std::convert::TryInto;
+use cw20::Denom;
 
-use crate::util;
-use marble_collection::msg::{InstantiateMsg as CollectionInstantiateMsg, ExecuteMsg as CollectionExecuteMsg, QueryMsg as CollectionQueryMsg, ConfigResponse as CollectionConfigResponse};
 
 // version info for migration info
 const CONTRACT_NAME: &str = "nftstaking";
