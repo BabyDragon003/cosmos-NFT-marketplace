@@ -18,6 +18,27 @@ pub fn query_owner_allowances(
     limit: Option<u32>,
 ) -> StdResult<AllAllowancesResponse> {
     let owner_addr = deps.api.addr_validate(&owner)?;
+    let limit = limit.unwrap_or(DEFAULT_LIMIT).min(MAX_LIMIT) as usize;
+    let start = start_after.map(|s| Bound::ExclusiveRaw(s.into_bytes()));
+
+    let allowances = ALLOWANCES
+        .prefix(&owner_addr)
+        .range(deps.storage, start, None, Order::Ascending)
+        .take(limit)
+        .map(|item| {
+            item.map(|(addr, allow)| AllowanceInfo {
+                spender: addr.into(),
+                allowance: allow.allowance,
+                expires: allow.expires,
+            })
+        })
+        .collect::<StdResult<_>>()?;
+    Ok(AllAllowancesResponse { allowances })
+}
+
+pub fn query_spender_allowances(
+    deps: Deps,
+    spender: String,
     start_after: Option<String>,
     limit: Option<u32>,
 ) -> StdResult<AllSpenderAllowancesResponse> {

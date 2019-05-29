@@ -8,17 +8,6 @@ use crate::state::CONFIG;
 
 pub const MAX_LIMIT: u32 = 30;
 pub const DEFAULT_LIMIT: u32 = 10;
-pub const MAX_ORDER: u64 = 10;
-
-pub fn multiple() -> Uint128 { Uint128::from(100u128) }
-pub fn decimal() -> Uint128 { Uint128::from(1000000u128) }
-
-pub fn check_enabled(
-    storage: &mut dyn Storage,
-) -> Result<Response, ContractError> {
-    let cfg = CONFIG.load(storage)?;
-    if !cfg.enabled {
-        return Err(ContractError::Disabled {})
     }
     Ok(Response::new().add_attribute("action", "check_enabled"))
 }
