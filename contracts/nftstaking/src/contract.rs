@@ -13,26 +13,16 @@ use cw721::{
 };
 use cw20::Denom;
 
-
-// version info for migration info
-const CONTRACT_NAME: &str = "nftstaking";
-const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
-const INSTANTIATE_TOKEN_REPLY_ID: u64 = 1;
-
-
-#[cfg_attr(not(feature = "library"), entry_point)]
-pub fn instantiate(
-    deps: DepsMut,
-    env: Env,
-    info: MessageInfo,
-    msg: InstantiateMsg,
-) -> Result<Response, crate::ContractError> {
-    set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
-
-
-    let config = Config {
-        owner: info.sender.clone(),
-        collection_address: msg.collection_address.clone(),
+use cw2::{get_contract_version};
+use cw721::Cw721ReceiveMsg;
+use cw_storage_plus::Bound;
+use cw721_base::{
+    msg::ExecuteMsg as Cw721ExecuteMsg, msg::InstantiateMsg as Cw721InstantiateMsg, Extension, 
+    msg::MintMsg, msg::BatchMintMsg, msg::QueryMsg as Cw721QueryMsg,  msg::EditMsg
+};
+use crate::msg::{ConfigResponse, ExecuteMsg, InstantiateMsg, QueryMsg, MigrateMsg, NftReceiveMsg, StakingInfo};
+use cw_utils::{Expiration, Scheduled};
+use cw20::{Cw20ReceiveMsg, Cw20ExecuteMsg, Cw20CoinVerified, Balance};
         cw20_address: msg.cw20_address.clone(),
         daily_reward: msg.daily_reward.clone(),
         interval: msg.interval,

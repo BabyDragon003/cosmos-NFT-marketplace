@@ -13,6 +13,22 @@
     "uri"
   ],
   "properties": {
+    "cw20_address": {
+      "$ref": "#/definitions/Addr"
+    },
+    "max_tokens": {
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "name": {
+      "type": "string"
+    },
+    "owner": {
+      "$ref": "#/definitions/Addr"
+    },
+    "royalty": {
+      "type": "integer",
       "format": "uint32",
       "minimum": 0.0
     },

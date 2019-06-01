@@ -13,26 +13,16 @@ use cw20::{
 use cw_utils::ensure_from_older_version;
 
 use crate::allowances::{
-
-/// Checks if data starts with XML preamble
-fn verify_xml_preamble(data: &[u8]) -> Result<(), ContractError> {
-    // The easiest way to perform this check would be just match on regex, however regex
-    // compilation is heavy and probably not worth it.
-
-    let preamble = data
-        .split_inclusive(|c| *c == b'>')
-        .next()
-        .ok_or(ContractError::InvalidXmlPreamble {})?;
-
-    const PREFIX: &[u8] = b"<?xml ";
-    const POSTFIX: &[u8] = b"?>";
-
-    if !(preamble.starts_with(PREFIX) && preamble.ends_with(POSTFIX)) {
-        Err(ContractError::InvalidXmlPreamble {})
-    } else {
-        Ok(())
-    }
-
+    execute_burn_from, execute_decrease_allowance, execute_increase_allowance, execute_send_from,
+    execute_transfer_from, query_allowance,
+};
+use crate::enumerable::{query_all_accounts, query_owner_allowances, query_spender_allowances};
+use crate::error::ContractError;
+use crate::msg::{ExecuteMsg, InstantiateMsg, MigrateMsg, QueryMsg};
+use crate::state::{
+    MinterData, TokenInfo, ALLOWANCES, ALLOWANCES_SPENDER, BALANCES, LOGO, MARKETING_INFO,
+    TOKEN_INFO,
+};
     // Additionally attributes format could be validated as they are well defined, as well as
     // comments presence inside of preable, but it is probably not worth it.
 }

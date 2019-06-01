@@ -13,26 +13,16 @@ pub use crate::state::Cw721Contract;
 use cosmwasm_std::Empty;
 use serde::{Deserialize, Serialize};
 
-    pub attributes: Option<Vec<Trait>>,
-    pub background_color: Option<String>,
-    pub animation_url: Option<String>,
-    pub youtube_url: Option<String>,
-    pub timestamp: Option<u64>
+
+#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug, Default)]
+pub struct Trait {
+    pub display_type: Option<String>,
+    pub trait_type: String,
+    pub value: String,
 }
 
-pub type Extension = Option<Metadata>;
-pub type Cw721MetadataContract<'a> = Cw721Contract<'a, Extension, Empty>;
-// pub type ExecuteMsg = ExecuteMsg<Extension>;
-
-#[cfg(not(feature = "library"))]
-pub mod entry {
-    use super::*;
-
-    use cosmwasm_std::entry_point;
-    use cosmwasm_std::{Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
-
-    // This is a simple type to let us handle empty extensions
-
+// see: https://docs.opensea.io/docs/metadata-standards
+#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug, Default)]
     // This makes a conscious choice on the various generics used by the contract
     #[entry_point]
     pub fn instantiate(
