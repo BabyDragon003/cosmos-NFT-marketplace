@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use cw20::{Cw20ReceiveMsg};
 use cosmwasm_std::{Uint128, Addr};
