@@ -8,6 +8,17 @@ use cosmwasm_std::{
 };
 use cw2::set_contract_version;
 use cw721::{
+    OwnerOfResponse
+    
+};
+use cw20::Denom;
+
+use cw2::{get_contract_version};
+use cw721::Cw721ReceiveMsg;
+use cw_storage_plus::Bound;
+use cw721_base::{
+    msg::ExecuteMsg as Cw721ExecuteMsg, msg::InstantiateMsg as Cw721InstantiateMsg, Extension, 
+    msg::MintMsg, msg::BatchMintMsg, msg::QueryMsg as Cw721QueryMsg,  msg::EditMsg
 };
 use crate::msg::{ConfigResponse, ExecuteMsg, InstantiateMsg, QueryMsg, MigrateMsg, NftReceiveMsg, StakingInfo};
 use cw_utils::{Expiration, Scheduled};

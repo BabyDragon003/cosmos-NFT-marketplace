@@ -18,27 +18,6 @@
       "type": "object",
       "required": [
         "get_sale"
-      ],
-      "properties": {
-        "get_sale": {
-          "type": "object",
-          "required": [
-            "token_id"
-          ],
-          "properties": {
-            "token_id": {
-              "type": "integer",
-              "format": "uint32",
-              "minimum": 0.0
-            }
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    {
-      "type": "object",
-      "required": [
         "get_sales"
       ],
       "properties": {
