@@ -1,4 +1,3 @@
-#[cfg(not(feature = "library"))]
 use cosmwasm_std::entry_point;
 use cosmwasm_std::Order::Ascending;
 use cosmwasm_std::{
@@ -23,6 +22,32 @@ use crate::state::{
     MinterData, TokenInfo, ALLOWANCES, ALLOWANCES_SPENDER, BALANCES, LOGO, MARKETING_INFO,
     TOKEN_INFO,
 };
+
+// version info for migration info
+const CONTRACT_NAME: &str = "crates.io:cw20-base";
+const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
+
+const LOGO_SIZE_CAP: usize = 5 * 1024;
+
+/// Checks if data starts with XML preamble
+fn verify_xml_preamble(data: &[u8]) -> Result<(), ContractError> {
+    // The easiest way to perform this check would be just match on regex, however regex
+    // compilation is heavy and probably not worth it.
+
+    let preamble = data
+        .split_inclusive(|c| *c == b'>')
+        .next()
+        .ok_or(ContractError::InvalidXmlPreamble {})?;
+
+    const PREFIX: &[u8] = b"<?xml ";
+    const POSTFIX: &[u8] = b"?>";
+
+    if !(preamble.starts_with(PREFIX) && preamble.ends_with(POSTFIX)) {
+        Err(ContractError::InvalidXmlPreamble {})
+    } else {
+        Ok(())
+    }
+
     // Additionally attributes format could be validated as they are well defined, as well as
     // comments presence inside of preable, but it is probably not worth it.
 }
