@@ -1,13 +1,8 @@
+{
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "CollectionListResponse",
   "type": "object",
   "required": [
-    "list"
-  ],
-  "properties": {
-    "list": {
-      "type": "array",
-      "items": {
         "$ref": "#/definitions/CollectionInfo"
       }
     }

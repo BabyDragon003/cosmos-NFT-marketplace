@@ -1,13 +1,8 @@
+[package]
 name = "marble-marketplace"
 version = "0.0.1"
 authors = ["Joni Lai <phantomtop0127@gmail.com>", "FORTIS"]
 edition = "2018"
-description = "marketplace contract"
-license = "Apache-2.0"
-repository = "https://github.com/PhantomTop/marketplace-contract"
-homepage = "https://cosmwasm.com"
-documentation = "https://docs.cosmwasm.com"
-
 exclude = [
   "contract.wasm",
   "hash.txt",
