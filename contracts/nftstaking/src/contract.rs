@@ -3,16 +3,11 @@ use crate::ContractError;
 use crate::state::{Config, CONFIG, STAKING};
 use cosmwasm_std::entry_point;
 use cosmwasm_std::{
-    
+    to_binary, Addr, Binary, CosmosMsg, Deps, DepsMut, Env, MessageInfo, Reply, ReplyOn, Response, Api,
+    StdResult, SubMsg, Uint128, WasmMsg, Coin, from_binary, BankMsg, QueryRequest, WasmQuery, Storage, Order
 };
-use cw20::Denom;
-
-use cw2::{get_contract_version};
-use cw721::Cw721ReceiveMsg;
-use cw_storage_plus::Bound;
-use cw721_base::{
-    msg::ExecuteMsg as Cw721ExecuteMsg, msg::InstantiateMsg as Cw721InstantiateMsg, Extension, 
-    msg::MintMsg, msg::BatchMintMsg, msg::QueryMsg as Cw721QueryMsg,  msg::EditMsg
+use cw2::set_contract_version;
+use cw721::{
 };
 use crate::msg::{ConfigResponse, ExecuteMsg, InstantiateMsg, QueryMsg, MigrateMsg, NftReceiveMsg, StakingInfo};
 use cw_utils::{Expiration, Scheduled};
