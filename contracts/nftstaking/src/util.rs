@@ -1,4 +1,3 @@
-use cosmwasm_std::{
     to_binary,  Response, StdResult, Uint128, Coin, BankMsg,
     WasmMsg, WasmQuery, QueryRequest, Addr, Storage, CosmosMsg,  QuerierWrapper, BalanceResponse as NativeBalanceResponse, BankQuery
 };
@@ -23,6 +22,32 @@ pub fn check_enabled(
     Ok(Response::new().add_attribute("action", "check_enabled"))
 }
 
+pub fn check_owner(
+    storage: &mut dyn Storage,
+    address: Addr
+) -> Result<Response, ContractError> {
+    let cfg = CONFIG.load(storage)?;
+    
+    if address != cfg.owner {
+        return Err(ContractError::Unauthorized {})
+    }
+    Ok(Response::new().add_attribute("action", "check_owner"))
+}
+
+pub fn execute_update_owner(
+    storage: &mut dyn Storage,
+    address: Addr,
+    owner: Addr,
+) -> Result<Response, ContractError> {
+    // authorize owner
+    check_owner(storage, address)?;
+    
+    CONFIG.update(storage, |mut exists| -> StdResult<_> {
+        exists.owner = owner.clone();
+        Ok(exists)
+    })?;
+
+    Ok(Response::new().add_attribute("action", "update_config").add_attribute("owner", owner.clone()))
 }
 
 pub fn execute_update_enabled (

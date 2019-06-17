@@ -1,4 +1,3 @@
-use cosmwasm_std::{StdError, Uint128};
 use thiserror::Error;
 use cw_utils::{Expiration, Scheduled};
 

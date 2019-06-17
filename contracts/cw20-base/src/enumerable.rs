@@ -1,4 +1,3 @@
-use cosmwasm_std::{Deps, Order, StdResult};
 use cw20::{
     AllAccountsResponse, AllAllowancesResponse, AllSpenderAllowancesResponse, AllowanceInfo,
     SpenderAllowanceInfo,
