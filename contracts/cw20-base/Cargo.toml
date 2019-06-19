@@ -1,3 +1,4 @@
+[package]
 name = "cw20-base"
 version = "0.14.0"
 authors = ["Ethan Frey <ethanfrey@users.noreply.github.com>"]

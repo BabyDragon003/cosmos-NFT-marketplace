@@ -1,3 +1,4 @@
+[package]
 name = "nftstaking"
 version = "0.11.0"
 authors = ["Joni Lai <phantomtop0127@gmail.com>"]
@@ -7,17 +8,6 @@ exclude = [
   # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
   "contract.wasm",
   "hash.txt",
-]
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[lib]
-crate-type = ["cdylib", "rlib"]
-
-[profile.release]
-opt-level = 3
-debug = false
-rpath = false
 lto = true
 debug-assertions = false
 codegen-units = 1
