@@ -8,6 +8,17 @@ pub mod state;
 
 use schemars::JsonSchema;
 pub use crate::error::ContractError;
+pub use crate::msg::{ExecuteMsg, InstantiateMsg, MintMsg, MinterResponse, QueryMsg};
+pub use crate::state::Cw721Contract;
+use cosmwasm_std::Empty;
+use serde::{Deserialize, Serialize};
+
+
+#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug, Default)]
+pub struct Trait {
+    pub display_type: Option<String>,
+    pub trait_type: String,
+    pub value: String,
 }
 
 // see: https://docs.opensea.io/docs/metadata-standards

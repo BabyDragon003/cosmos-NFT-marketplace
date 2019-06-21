@@ -8,6 +8,17 @@
         "get_config"
       ],
       "properties": {
+        "get_config": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "get_sale"
+      ],
       "properties": {
         "get_sale": {
           "type": "object",

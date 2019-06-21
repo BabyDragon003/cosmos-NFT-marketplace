@@ -8,26 +8,16 @@ pub enum ContractError {
     Std(#[from] StdError),
 
     #[error("Unauthorized")]
-    #[error("Royalty must bigger than 2.5%")]
-    MustBigger25 {},
+    Unauthorized {},
 
+    #[error("Already on Sale")]
+    AlreadyOnSale {},
 
-    #[error("InvalidSaleType")]
-    InvalidSaleType {},
+    #[error("CannotCancelSale")]
+    CannotCancelSale {},
 
-    #[error("DurationIncorrect")]
-    DurationIncorrect {},
-
-    #[error("NotOnSale")]
-    NotOnSale {},
-
-    #[error("NoBids")]
-    NoBids {},
-    
-    #[error("NotSupported")]
-    NotSupported {},
-
-    #[error("NotStarted")]
+    #[error("TooBigRoyalties: {a} + {b} > {c}")]
+    TooBigRoyalties{a: u32, b: u32, c: u32},
     NotStarted {},
 
     #[error("Disabled")]
