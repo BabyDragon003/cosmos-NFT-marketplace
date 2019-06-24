@@ -1,4 +1,3 @@
-use std::collections::btree_set::Difference;
 
 #[cfg(not(feature = "library"))]
 use cosmwasm_std::entry_point;
