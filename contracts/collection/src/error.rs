@@ -1,3 +1,4 @@
+use cosmwasm_std::{StdError, Uint128};
 use thiserror::Error;
 use cw_utils::{Expiration, Scheduled};
 
@@ -7,17 +8,6 @@ pub enum ContractError {
     Std(#[from] StdError),
 
     #[error("Unauthorized")]
-    Unauthorized {},
-
-    #[error("Already on Sale")]
-    AlreadyOnSale {},
-
-    #[error("CannotCancelSale")]
-    CannotCancelSale {},
-
-    #[error("TooBigRoyalties: {a} + {b} > {c}")]
-    TooBigRoyalties{a: u32, b: u32, c: u32},
-
     #[error("Royalty must bigger than 2.5%")]
     MustBigger25 {},
 

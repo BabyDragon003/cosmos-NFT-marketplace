@@ -1,3 +1,4 @@
+#[cfg(not(feature = "library"))]
 use crate::ContractError;
 use crate::state::{Config, CONFIG, SALE};
 use cosmwasm_std::entry_point;
