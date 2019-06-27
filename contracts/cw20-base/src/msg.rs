@@ -13,22 +13,6 @@ pub struct InstantiateMarketingInfo {
     pub logo: Option<Logo>,
 }
 
-#[derive(Serialize, Deserialize, JsonSchema, Debug, Clone, PartialEq)]
-pub struct InstantiateMsg {
-    pub name: String,
-    pub symbol: String,
-    pub decimals: u8,
-    pub initial_balances: Vec<Cw20Coin>,
-    pub mint: Option<MinterResponse>,
-    pub marketing: Option<InstantiateMarketingInfo>,
-}
-
-impl InstantiateMsg {
-    pub fn get_cap(&self) -> Option<Uint128> {
-        self.mint.as_ref().and_then(|v| v.cap)
-    }
-
-    pub fn validate(&self) -> StdResult<()> {
         // Check name, symbol, decimals
         if !is_valid_name(&self.name) {
             return Err(StdError::generic_err(
