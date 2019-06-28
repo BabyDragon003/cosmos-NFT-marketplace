@@ -18,27 +18,6 @@ pub enum ContractError {
 
     #[error("TooBigRoyalties: {a} + {b} > {c}")]
     TooBigRoyalties{a: u32, b: u32, c: u32},
-
-    #[error("Royalty must bigger than 2.5%")]
-    MustBigger25 {},
-
-
-    #[error("InvalidSaleType")]
-    InvalidSaleType {},
-
-    #[error("DurationIncorrect")]
-    DurationIncorrect {},
-
-    #[error("NotOnSale")]
-    NotOnSale {},
-
-    #[error("NoBids")]
-    NoBids {},
-    
-    #[error("NotSupported")]
-    NotSupported {},
-
-    #[error("NotStarted")]
     NotStarted {},
 
     #[error("Disabled")]

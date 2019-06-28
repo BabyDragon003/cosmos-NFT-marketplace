@@ -13,5 +13,8 @@ documentation = "https://docs.cosmwasm.com"
 crate-type = ["cdylib", "rlib"]
 
 [features]
-cosmwasm-schema = { version = "1.0.0" }
-cw-multi-test = { version = "0.14.0" }
+backtraces = ["cosmwasm-std/backtraces"]
+# use library feature to disable all instantiate/execute/query exports
+library = []
+
+[dependencies]

@@ -13,16 +13,11 @@ pub struct InstantiateMsg {
     pub price: Uint128,
     pub denom: String,
     pub cw721_address: Addr
-        index: u32
-    },
-    WithdrawId {
-        token_id: String
-    }
-    
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
+pub enum ExecuteMsg {
 pub enum QueryMsg {
     GetConfig {},
     GetToken {
