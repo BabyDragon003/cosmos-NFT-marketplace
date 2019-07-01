@@ -1,4 +1,3 @@
-use std::ops::Index;
 
 #[cfg(not(feature = "library"))]
 use crate::ContractError;
