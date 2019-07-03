@@ -3,16 +3,11 @@
   "title": "SaleInfo",
   "type": "object",
   "required": [
-    "token_id"
-  ],
-  "properties": {
-    "duration_type": {
-      "$ref": "#/definitions/DurationType"
-    },
-    "initial_price": {
-      "$ref": "#/definitions/Uint128"
-    },
-    "provider": {
+    "duration_type",
+    "initial_price",
+    "provider",
+    "requests",
+    "sale_type",
       "$ref": "#/definitions/Addr"
     },
     "requests": {

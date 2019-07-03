@@ -3,16 +3,11 @@
   "title": "ConfigResponse",
   "type": "object",
   "required": [
-    "symbol",
-    "unused_token_id",
-    "uri"
-  ],
-  "properties": {
-    "cw20_address": {
-      "$ref": "#/definitions/Addr"
-    },
-    "cw721_address": {
-      "anyOf": [
+    "cw20_address",
+    "enabled",
+    "max_tokens",
+    "name",
+    "owner",
         {
           "$ref": "#/definitions/Addr"
         },
