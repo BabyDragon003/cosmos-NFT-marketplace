@@ -1,4 +1,3 @@
-{
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "ConfigResponse",
   "type": "object",
@@ -8,6 +7,17 @@
     "max_tokens",
     "name",
     "owner",
+    "royalty",
+    "symbol",
+    "unused_token_id",
+    "uri"
+  ],
+  "properties": {
+    "cw20_address": {
+      "$ref": "#/definitions/Addr"
+    },
+    "cw721_address": {
+      "anyOf": [
         {
           "$ref": "#/definitions/Addr"
         },

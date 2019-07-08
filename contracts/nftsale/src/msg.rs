@@ -1,4 +1,3 @@
-use cosmwasm_std::{Addr, Uint128};
 use cw20::Cw20ReceiveMsg;
 use cw721::Cw721ReceiveMsg;
 
@@ -8,6 +7,17 @@ use serde::{Deserialize, Serialize};
 use cw_utils::{Expiration, Scheduled};
 use cw20::Denom;
 
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct InstantiateMsg {
+    pub price: Uint128,
+    pub denom: String,
+    pub cw721_address: Addr
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum ExecuteMsg {
+    UpdateOwner {
         owner: Addr,
     },
     UpdateEnabled {

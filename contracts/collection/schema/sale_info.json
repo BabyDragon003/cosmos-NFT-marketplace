@@ -1,4 +1,3 @@
-{
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "SaleInfo",
   "type": "object",
@@ -8,6 +7,17 @@
     "provider",
     "requests",
     "sale_type",
+    "sell_index",
+    "token_id"
+  ],
+  "properties": {
+    "duration_type": {
+      "$ref": "#/definitions/DurationType"
+    },
+    "initial_price": {
+      "$ref": "#/definitions/Uint128"
+    },
+    "provider": {
       "$ref": "#/definitions/Addr"
     },
     "requests": {

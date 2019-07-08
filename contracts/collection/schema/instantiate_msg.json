@@ -1,4 +1,3 @@
-{
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "InstantiateMsg",
   "type": "object",
@@ -8,6 +7,17 @@
     "name",
     "owner",
     "royalty",
+    "symbol",
+    "token_code_id",
+    "uri"
+  ],
+  "properties": {
+    "cw20_address": {
+      "$ref": "#/definitions/Addr"
+    },
+    "max_tokens": {
+      "type": "integer",
+      "format": "uint32",
       "minimum": 0.0
     },
     "name": {

@@ -1,4 +1,3 @@
-use schemars::JsonSchema;
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 use std::marker::PhantomData;
@@ -7,6 +6,17 @@ use cosmwasm_std::{Addr, BlockInfo, StdResult, Storage};
 
 use cw721::{ContractInfoResponse, CustomMsg, Cw721, Expiration};
 use cw_storage_plus::{Index, IndexList, IndexedMap, Item, Map, MultiIndex};
+
+pub struct Cw721Contract<'a, T, C>
+where
+    T: Serialize + DeserializeOwned + Clone,
+{
+    pub contract_info: Item<'a, ContractInfoResponse>,
+    pub minter: Item<'a, Addr>,
+    pub token_count: Item<'a, u64>,
+    /// Stored as (granter, operator) giving operator full control over granter's account
+    pub operators: Map<'a, (&'a Addr, &'a Addr), Expiration>,
+    pub tokens: IndexedMap<'a, &'a str, TokenInfo<T>, TokenIndexes<'a, T>>,
 
     pub(crate) _custom_response: PhantomData<C>,
 }

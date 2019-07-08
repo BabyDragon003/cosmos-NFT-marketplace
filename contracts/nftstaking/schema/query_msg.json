@@ -1,4 +1,3 @@
-{
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "QueryMsg",
   "oneOf": [
@@ -8,6 +7,17 @@
         "get_config"
       ],
       "properties": {
+        "get_config": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "get_sale"
+      ],
       "properties": {
         "get_sale": {
           "type": "object",
