@@ -3,6 +3,12 @@
   "title": "SaleInfo",
   "type": "object",
   "required": [
+    "duration_type",
+    "initial_price",
+    "provider",
+    "requests",
+    "sale_type",
+    "sell_index",
     "token_id"
   ],
   "properties": {
